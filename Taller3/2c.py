@@ -1,11 +1,19 @@
-from scipy.stats import poisson
+import math
+from math import factorial
 
 print("c. ¿cuál es la probabilidad de que fallen por lo menos 11 en 125 horas?")
 
-lambda_100 = 8
+lambda_ = 10
+k = 0
+e = math.e
 
-lambda_125 = (125 / 100) * lambda_100
-prob_c = 1 - poisson.cdf(10, lambda_125)
+suma_res = 0
 
-print(f"c) La probabilidad de que fallen al menos 11 componentes en 125 horas es {prob_c:.4f}")
+while k < lambda_ :
+    P = ((e**(-lambda_)) * (lambda_**k)) / factorial(k)
+    k += 1
+    suma_res += P
 
+res = 1 - suma_res
+
+print(f"P(X >= {k}) =", round(res * 100, 3), "%")

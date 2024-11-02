@@ -1,13 +1,14 @@
+import math
+from math import factorial
+
 print("a. ¿cuál es la probabilidad de que falle un componente en 25 horas?")
 
-from scipy.stats import poisson
+lambda_ = 8 / 4
+k = 1
+e = math.e
 
-lambda_100 = 8
+P = ((e**(-lambda_)) * (lambda_**k)) / factorial(k)
 
-lambda_25 = (25 / 100) * lambda_100
-prob_a = poisson.pmf(1, lambda_25)
+res = round(P * 100, 2)
 
-# Mostramos los resultados
-print(f"a) La probabilidad de que falle un componente en 25 horas es {prob_a:.4f}")
-
-
+print(f"P(X = {k}) =", res)

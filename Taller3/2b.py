@@ -1,10 +1,19 @@
-from scipy.stats import poisson
+import math
+from math import factorial
 
-lambda_100 = 8
+print("a. ¿cuál es la probabilidad de que falle un componente en 25 horas?")
 
-print("b. ¿y de que fallen no más de dos componentes en 50 horas?")
+lambda_ = 8 / 2
+k = 0
+e = math.e
+X = 2
+suma_res = 0
 
-lambda_50 = (50 / 100) * lambda_100
-prob_b = poisson.cdf(2, lambda_50)
+while k <= X :
+    P = ((e**(-lambda_)) * (lambda_**k)) / factorial(k)
+    k += 1
+    suma_res += P
 
-print(f"b) La probabilidad de que fallen no más de dos componentes en 50 horas es {prob_b:.4f}")
+res = round(suma_res * 100, 2)
+
+print(f"P(X = {k-1}) =", res, "%")
